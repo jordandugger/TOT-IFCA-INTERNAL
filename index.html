@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Message From Jordan & Erin — IFCA</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:#08111c;color:#e8ecf4;font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.65;}
+::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-track{background:#08111c;} ::-webkit-scrollbar-thumb{background:rgba(232,119,34,.3);border-radius:2px;}
+
+/* ── HERO ── */
+.hero{position:relative;overflow:hidden;text-align:center;padding:72px 24px 56px;background:linear-gradient(160deg,#08111c 0%,#0d1e30 55%,#060f1a 100%);}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 65% 55% at 50% -5%,rgba(232,119,34,.16) 0%,transparent 65%);pointer-events:none;}
+.hero-inner{position:relative;z-index:1;max-width:700px;margin:0 auto;}
+.hero-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:#E87722;margin-bottom:20px;opacity:.9;}
+.hero-h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,7vw,76px);line-height:.9;letter-spacing:.5px;color:#fff;margin-bottom:18px;}
+.hero-h1 .acc{color:#E87722;}
+.hero-sub{font-size:16px;font-weight:300;color:rgba(232,236,244,.55);max-width:580px;margin:0 auto;line-height:1.75;}
+.hero-sub strong{color:#e8ecf4;}
+
+/* ── ANNOUNCEMENT VIDEO ── */
+.vid-section{background:#08111c;padding:40px 24px 0;}
+.vid-inner{max-width:760px;margin:0 auto;}
+.vid-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:#E87722;margin-bottom:12px;opacity:.7;}
+.vid-embed{position:relative;padding-bottom:56.25%;height:0;border-radius:10px;overflow:hidden;border:1px solid rgba(232,119,34,.2);background:#040b14;}
+.vid-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+.vid-placeholder{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:rgba(255,255,255,.18);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;}
+.vid-note{margin-top:10px;font-size:11px;color:rgba(232,236,244,.28);font-family:'DM Mono',monospace;letter-spacing:.04em;}
+
+/* ── FAQ ── */
+.faq-section{background:#0a1522;padding:56px 24px 64px;}
+.faq-inner{max-width:720px;margin:0 auto;}
+.faq-h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,4.5vw,44px);letter-spacing:.5px;color:#fff;margin-bottom:6px;}
+.faq-h2 .acc{color:#E87722;}
+.faq-sub{font-family:'DM Mono',monospace;font-size:11px;color:rgba(232,236,244,.3);letter-spacing:.04em;margin-bottom:32px;}
+
+.faq-item{border-bottom:1px solid rgba(255,255,255,.06);padding:0;}
+.faq-item:last-of-type{border-bottom:none;}
+.faq-q-row{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:18px 0;cursor:pointer;user-select:none;}
+.faq-q-text{font-size:14.5px;font-weight:600;color:#e8ecf4;line-height:1.45;flex:1;}
+.faq-arr{color:#334155;font-size:12px;flex-shrink:0;margin-top:3px;transition:transform .2s,color .2s;}
+.faq-item.open .faq-arr{transform:rotate(180deg);color:#E87722;}
+.faq-a{display:none;padding:0 0 20px 0;}
+.faq-item.open .faq-a{display:block;}
+.faq-a-text{font-size:13.5px;color:rgba(232,236,244,.58);line-height:1.85;outline:none;border:1px dashed transparent;border-radius:6px;padding:4px 6px;transition:border-color .2s,background .2s;}
+.faq-a-text[contenteditable="true"]{border-color:rgba(232,119,34,.35);background:rgba(232,119,34,.04);color:rgba(232,236,244,.72);}
+.faq-a-text strong{color:#e8ecf4;}
+.faq-edit-row{display:flex;justify-content:flex-end;gap:8px;margin-top:8px;}
+.edit-btn{background:rgba(232,119,34,.1);border:1px solid rgba(232,119,34,.28);color:#E87722;border-radius:5px;padding:4px 12px;font-size:10px;font-family:'DM Mono',monospace;letter-spacing:.05em;cursor:pointer;transition:all .15s;}
+.edit-btn:hover{background:rgba(232,119,34,.2);}
+.save-btn{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);color:#22c55e;border-radius:5px;padding:4px 12px;font-size:10px;font-family:'DM Mono',monospace;letter-spacing:.05em;cursor:pointer;transition:all .15s;display:none;}
+.save-btn:hover{background:rgba(34,197,94,.18);}
+
+/* ── PODCAST EMBED ── */
+.pod-section{background:#08111c;padding:48px 24px 60px;}
+.pod-inner{max-width:680px;margin:0 auto;text-align:center;}
+.pod-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:#E87722;margin-bottom:12px;opacity:.7;}
+.pod-hed{font-family:'Bebas Neue',sans-serif;font-size:clamp(20px,3.5vw,30px);color:#fff;letter-spacing:.5px;margin-bottom:6px;}
+.pod-sub{font-size:13px;color:rgba(232,236,244,.38);margin-bottom:20px;font-weight:300;}
+.pod-embed{border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,.07);background:#060d1a;}
+.pod-embed iframe{display:block;width:100%;border:none;}
+.pod-placeholder{height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:rgba(255,255,255,.15);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;}
+
+/* ── FOOTER ── */
+.footer{padding:20px 24px;text-align:center;background:#040710;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.1);}
+
+/* ── EDIT INSTRUCTIONS BANNER ── */
+.edit-banner{background:rgba(245,158,11,.05);border-bottom:1px solid rgba(245,158,11,.15);padding:10px 24px;text-align:center;font-size:11px;color:rgba(245,158,11,.6);font-family:'DM Mono',monospace;letter-spacing:.04em;}
+.edit-banner strong{color:#f59e0b;}
+</style>
+</head>
+<body>
+
+<div class="edit-banner">Internal preview · <strong>Click any FAQ answer then hit "Edit" to update copy</strong> · Changes are session-only — copy final text before closing</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">IFCA · May 2026 · A Message From Your Founders</div>
+    <h1 class="hero-h1">After Eight Years,<br>We're <span class="acc">Handing<br>The Keys Over.</span></h1>
+    <p class="hero-sub">We have something important to share with you — and we wanted you to hear it from us first, before it goes anywhere else. Watch the video below.</p>
+  </div>
+</div>
+
+<!-- ANNOUNCEMENT VIDEO -->
+<div class="vid-section">
+  <div class="vid-inner">
+    <div class="vid-label">Watch · Announcement from Jordan, Erin & Taeler</div>
+    <div class="vid-embed">
+      <!-- REPLACE: paste your Vimeo/YouTube iframe here, e.g.:
+           <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+           <iframe src="https://player.vimeo.com/video/VIDEO_ID" allowfullscreen></iframe>
+      -->
+      <div class="vid-placeholder">
+        <span>📹</span>
+        <span>Embed announcement video here</span>
+        <span style="font-size:9px;opacity:.6;">Replace this div with your iframe</span>
+      </div>
+    </div>
+    <div class="vid-note">Jordan + Erin + Taeler · Columbus, May 2026 · 3–4 min</div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-section">
+  <div class="faq-inner">
+    <h2 class="faq-h2">Your Questions. <span class="acc">Answered.</span></h2>
+    <div class="faq-sub">We anticipated what you'd want to know. Here are honest answers to everything.</div>
+
+    <!-- Q1 -->
+    <div class="faq-item" onclick="toggle(this)">
+      <div class="faq-q-row">
+        <span class="faq-q-text">What is actually happening — is IFCA being sold?</span>
+        <span class="faq-arr">▼</span>
+      </div>
+      <div class="faq-a" onclick="event.stopPropagation()">
+        <div class="faq-a-text" id="q1">Yes. IFCA has been acquired by Taeler De Haes, the founder of Fitness Coach Academy (FCA). This was a deliberate, multi-year process — not a rushed decision. Jordan and Erin spent a long time finding the right person to carry IFCA forward. Taeler is that person. The full story is in the announcement video and the podcast below.</div>
+        <div class="faq-edit-row"><button class="edit-btn" onclick="startEdit('q1',this);event.stopPropagation()">Edit</button><button class="save-btn" onclick="endEdit('q1',this);event.stopPropagation()">Save</button></div>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="faq-item" onclick="toggle(this)">
+      <div class="faq-q-row">
+        <span class="faq-q-text">Are Jordan and Erin still involved?</span>
+        <span class="faq-arr">▼</span>
+      </div>
+      <div class="faq-a" onclick="event.stopPropagation()">
+        <div class="faq-a-text" id="q2">Yes — through a 90-day active transition period running through the end of Q3 2026. During that window, Jordan and Erin are engaged daily: on calls, in the community, available. After Q3, Taeler leads fully and Jordan and Erin step into a lighter advisory role. They will not disappear on day one. The podcast below has Jordan and Erin walking through their reasoning in full.</div>
+        <div class="faq-edit-row"><button class="edit-btn" onclick="startEdit('q2',this);event.stopPropagation()">Edit</button><button class="save-btn" onclick="endEdit('q2',this);event.stopPropagation()">Save</button></div>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="faq-item" onclick="toggle(this)">
+      <div class="faq-q-row">
+        <span class="faq-q-text">Will my success coach change?</span>
+        <span class="faq-arr">▼</span>
+      </div>
+      <div class="faq-a" onclick="event.stopPropagation()">
+        <div class="faq-a-text" id="q3">No. Your current success coach is staying. The entire IFCA coaching team remains in place through and beyond the transition. Kevin Hamidi continues as Head Success Coach. The individual relationship you have with your coach is not being disrupted. Nothing in your day-to-day coaching experience changes on day one.</div>
+        <div class="faq-edit-row"><button class="edit-btn" onclick="startEdit('q3',this);event.stopPropagation()">Edit</button><button class="save-btn" onclick="endEdit('q3',this);event.stopPropagation()">Save</button></div>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="faq-item" onclick="toggle(this)">
+      <div class="faq-q-row">
+        <span class="faq-q-text">What happens to my contract and payment plan?</span>
+        <span class="faq-arr">▼</span>
+      </div>
+      <div class="faq-a" onclick="event.stopPropagation()">
+        <div class="faq-a-text" id="q4">Every contract and payment plan is fully honored. This is a legal condition of the acquisition — your enrollment terms are protected exactly as written when you signed. No changes to your billing schedule, amounts, or any terms of your enrollment. If you want your specific contract confirmed in writing, reply to the student email and our team will send it to you directly.</div>
+        <div class="faq-edit-row"><button class="edit-btn" onclick="startEdit('q4',this);event.stopPropagation()">Edit</button><button class="save-btn" onclick="endEdit('q4',this);event.stopPropagation()">Save</button></div>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="faq-item" onclick="toggle(this)">
+      <div class="faq-q-row">
+        <span class="faq-q-text">Will the curriculum change?</span>
+        <span class="faq-arr">▼</span>
+      </div>
+      <div class="faq-a" onclick="event.stopPropagation()">
+        <div class="faq-a-text" id="q5">The core IFCA Accelerator curriculum is not changing. The system you enrolled in is the system you're going to complete. What Taeler is adding over time: her FCA systems and content will be integrated to strengthen what's already there. We add — we don't subtract. Taeler's commitments on curriculum integrity are covered in detail in the podcast below.</div>
+        <div class="faq-edit-row"><button class="edit-btn" onclick="startEdit('q5',this);event.stopPropagation()">Edit</button><button class="save-btn" onclick="endEdit('q5',this);event.stopPropagation()">Save</button></div>
+      </div>
+    </div>
+
+    <!-- Q6 -->
+    <div class="faq-item" onclick="toggle(this)">
+      <div class="faq-q-row">
+        <span class="faq-q-text">Who is Taeler De Haes?</span>
+        <span class="faq-arr">▼</span>
+      </div>
+      <div class="faq-a" onclick="event.stopPropagation()">
+        <div class="faq-a-text" id="q6">Taeler is the founder of Fitness Coach Academy (FCA), where she built a community of coaches to consistent 5- and 6-figure months. She started with $825 in her bank account and generated $250,000 in her first year as an online coach — using the same systems IFCA teaches. She's not a corporate buyer. She's a coach who built exactly what you're building. That's why Jordan and Erin chose her over every other candidate.</div>
+        <div class="faq-edit-row"><button class="edit-btn" onclick="startEdit('q6',this);event.stopPropagation()">Edit</button><button class="save-btn" onclick="endEdit('q6',this);event.stopPropagation()">Save</button></div>
+      </div>
+    </div>
+
+    <!-- Q7 -->
+    <div class="faq-item" onclick="toggle(this)">
+      <div class="faq-q-row">
+        <span class="faq-q-text">Why did Jordan and Erin decide to sell?</span>
+        <span class="faq-arr">▼</span>
+      </div>
+      <div class="faq-a" onclick="event.stopPropagation()">
+        <div class="faq-a-text" id="q7">This wasn't burnout and it wasn't a reactive decision. IFCA reaching its next level of growth requires someone whose only full focus is this company. Jordan and Erin built IFCA to outlast them — that was always the plan. They found the person who can take this further than they could by splitting focus. The podcast below is the honest, unscripted version of how that decision was made.</div>
+        <div class="faq-edit-row"><button class="edit-btn" onclick="startEdit('q7',this);event.stopPropagation()">Edit</button><button class="save-btn" onclick="endEdit('q7',this);event.stopPropagation()">Save</button></div>
+      </div>
+    </div>
+
+    <!-- Q8 -->
+    <div class="faq-item" onclick="toggle(this)">
+      <div class="faq-q-row">
+        <span class="faq-q-text">What's the biggest change I'll actually notice?</span>
+        <span class="faq-arr">▼</span>
+      </div>
+      <div class="faq-a" onclick="event.stopPropagation()">
+        <div class="faq-a-text" id="q8">New energy and a new face leading the company. Taeler is a hands-on operator — she'll be present in the community and on calls in ways that founders splitting time across two companies and two families simply can't be. FCA students are also joining the IFCA ecosystem, which expands the peer community around you. The day-to-day experience gets fuller, not thinner.</div>
+        <div class="faq-edit-row"><button class="edit-btn" onclick="startEdit('q8',this);event.stopPropagation()">Edit</button><button class="save-btn" onclick="endEdit('q8',this);event.stopPropagation()">Save</button></div>
+      </div>
+    </div>
+
+    <!-- Q9 -->
+    <div class="faq-item" onclick="toggle(this)">
+      <div class="faq-q-row">
+        <span class="faq-q-text">Is IFCA going to become more corporate or lose its culture?</span>
+        <span class="faq-arr">▼</span>
+      </div>
+      <div class="faq-a" onclick="event.stopPropagation()">
+        <div class="faq-a-text" id="q9">No. Taeler is a solo founder who built FCA the same way Jordan and Erin built IFCA — close to her clients and community. She's not a PE-backed buyer. She's not building a brand roll-up. The core values of IFCA — <strong>Relentless Growth, Extreme Ownership, Authentic Connection</strong> — those are the standard Taeler is operating from. That's not a talking point. It's what she was vetted against.</div>
+        <div class="faq-edit-row"><button class="edit-btn" onclick="startEdit('q9',this);event.stopPropagation()">Edit</button><button class="save-btn" onclick="endEdit('q9',this);event.stopPropagation()">Save</button></div>
+      </div>
+    </div>
+
+    <!-- Q10 -->
+    <div class="faq-item" onclick="toggle(this)">
+      <div class="faq-q-row">
+        <span class="faq-q-text">What is FCA and what does it mean that they're merging?</span>
+        <span class="faq-arr">▼</span>
+      </div>
+      <div class="faq-a" onclick="event.stopPropagation()">
+        <div class="faq-a-text" id="q10">FCA (Fitness Coach Academy) is Taeler's coaching education company. It's being phased out as a standalone offer over the coming months, and FCA students are transitioning into the IFCA ecosystem. For IFCA students, this means a richer peer community, more resources, and a more focused operator at the top. Two communities, one direction — with IFCA as the platform.</div>
+        <div class="faq-edit-row"><button class="edit-btn" onclick="startEdit('q10',this);event.stopPropagation()">Edit</button><button class="save-btn" onclick="endEdit('q10',this);event.stopPropagation()">Save</button></div>
+      </div>
+    </div>
+
+    <!-- Q11 -->
+    <div class="faq-item" onclick="toggle(this)">
+      <div class="faq-q-row">
+        <span class="faq-q-text">Will the GHL tools and software access change?</span>
+        <span class="faq-arr">▼</span>
+      </div>
+      <div class="faq-a" onclick="event.stopPropagation()">
+        <div class="faq-a-text" id="q11">No. GHL is a core part of the IFCA toolkit and it's staying. Your subscription and access remain as-is. If anything, the tech infrastructure is getting stronger — Cory Carpenter is actively developing new AI tools inside the IFCA ecosystem post-acquisition.</div>
+        <div class="faq-edit-row"><button class="edit-btn" onclick="startEdit('q11',this);event.stopPropagation()">Edit</button><button class="save-btn" onclick="endEdit('q11',this);event.stopPropagation()">Save</button></div>
+      </div>
+    </div>
+
+    <!-- Q12 -->
+    <div class="faq-item" onclick="toggle(this)">
+      <div class="faq-q-row">
+        <span class="faq-q-text">I have a question that wasn't answered here — who do I ask?</span>
+        <span class="faq-arr">▼</span>
+      </div>
+      <div class="faq-a" onclick="event.stopPropagation()">
+        <div class="faq-a-text" id="q12">Reply directly to the student email that brought you here. Jordan or a member of our team will respond personally. We're also collecting real questions from the community to address in the May 21 FAQ email — so if something is on your mind, send it. There are no bad questions right now.</div>
+        <div class="faq-edit-row"><button class="edit-btn" onclick="startEdit('q12',this);event.stopPropagation()">Edit</button><button class="save-btn" onclick="endEdit('q12',this);event.stopPropagation()">Save</button></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PODCAST EMBED -->
+<div class="pod-section">
+  <div class="pod-inner">
+    <div class="pod-label">Full Story · Podcast Episode</div>
+    <h3 class="pod-hed">We Sold IFCA. Here's the Whole Story.</h3>
+    <p class="pod-sub">Jordan + Erin + Taeler · Unscripted · ~45 min · Publishes publicly May 14</p>
+    <div class="pod-embed">
+      <!-- REPLACE: paste your unlisted YouTube iframe here, e.g.:
+           <iframe width="100%" height="160" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+      -->
+      <div class="pod-placeholder">
+        <span>🎙️</span>
+        <span>Embed YouTube video here (unlisted)</span>
+        <span style="font-size:9px;opacity:.6;">Replace this div with your iframe · height="160"</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">IFCA · Impact Fitness Coaching Academy · May 2026 · Questions? Reply to your student email</div>
+
+<script>
+function toggle(item) {
+  item.classList.toggle('open');
+}
+function startEdit(id, btn) {
+  const el = document.getElementById(id);
+  el.contentEditable = 'true';
+  el.focus();
+  btn.style.display = 'none';
+  btn.nextElementSibling.style.display = 'inline-block';
+}
+function endEdit(id, btn) {
+  document.getElementById(id).contentEditable = 'false';
+  btn.style.display = 'none';
+  btn.previousElementSibling.style.display = 'inline-block';
+}
+</script>
+</body>
+</html>
