@@ -10,11 +10,9 @@
 html{scroll-behavior:smooth;}
 body{background:#08111c;color:#e8ecf4;font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.65;}
 ::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:#08111c;}::-webkit-scrollbar-thumb{background:rgba(232,119,34,.3);border-radius:2px;}
-.hero-img-wrap{position:relative;width:100%;overflow:hidden;max-height:380px;}
-.hero-img-wrap img{width:100%;display:block;object-fit:cover;object-position:center 30%;}
-.founder-section{background:#08111c;padding:40px 24px 48px;text-align:center;}
+.founder-section{background:#08111c;padding:64px 24px 48px;text-align:center;}
 .founder-inner{max-width:700px;margin:0 auto;}
-.ifca-logo-inline{height:54px;width:auto;display:block;margin:0 auto 24px;}
+.ifca-logo-inline{height:64px;width:auto;display:block;margin:0 auto 28px;}
 .ifca-logo-fallback{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:3px;color:#E87722;margin-bottom:24px;display:none;}
 .hero-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:#E87722;margin-bottom:16px;opacity:.9;}
 .hero-h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(42px,7vw,72px);line-height:.9;letter-spacing:.5px;color:#fff;margin-bottom:16px;}
@@ -81,14 +79,13 @@ body{background:#08111c;color:#e8ecf4;font-family:'DM Sans',sans-serif;font-size
 .ig-cta-btn{display:inline-block;background:#E87722;color:#fff;font-size:14px;font-weight:700;padding:14px 30px;border-radius:8px;text-decoration:none;letter-spacing:.02em;transition:background .2s;}
 .ig-cta-btn:hover{background:#cf6418;}
 .footer{padding:20px 24px;text-align:center;background:#040710;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.1);}
+@media (max-width: 600px) {
+  .training-body{padding:24px 20px 28px;}
+  .ifca-logo-inline{height:54px;}
+}
 </style>
 </head>
 <body>
-
-<!-- HERO IMAGE — IFCA team/community photo -->
-<div class="hero-img-wrap">
-  <img src="ifca-team-hero.png" alt="Impact Fitness Coaching Academy Community" onerror="this.style.display='none'"/>
-</div>
 
 <!-- FOUNDER MESSAGE -->
 <div class="founder-section">
